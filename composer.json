@@ -1,0 +1,15 @@
+{
+    "name": "rosa/client",
+    "autoload": {
+        "psr-4": {
+            "Rosa\\Client\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Samuel Oberger Rockenbach",
+            "email": "samuel.rockenbach@univates.br"
+        }
+    ],
+    "require": {}
+}
