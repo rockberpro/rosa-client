@@ -182,7 +182,7 @@ class CurlService
         {
             switch ($method) {
                 case CurlService::GET:
-                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST,  CurlService::GET);
+                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST, CurlService::GET);
                     break;
                 case CurlService::POST:
                     curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST, CurlService::POST);
@@ -191,10 +191,10 @@ class CurlService
                     curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST, CurlService::PUT);
                     break;
                 case CurlService::DELETE:
-                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST,  CurlService::DELETE);
+                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST, CurlService::DELETE);
                     break;
                 case CurlService::PATCH:
-                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST,  CurlService::PATCH);
+                    curl_setopt($this->getCurl(), CURLOPT_CUSTOMREQUEST, CurlService::PATCH);
                     break;
                 default:
                     throw new RuntimeException('Invalid HTTP metohd');
