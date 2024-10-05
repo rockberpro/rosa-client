@@ -128,7 +128,7 @@ class CurlService
      */
     public function get()
     {
-        return $this->executeCall(CurlService::GET);
+        return $this->call(CurlService::GET);
     }
 
     /**
@@ -137,7 +137,7 @@ class CurlService
      */
     public function post()
     {
-        return $this->executeCall(CurlService::POST);
+        return $this->call(CurlService::POST);
     }
 
     /**
@@ -146,7 +146,7 @@ class CurlService
      */
     public function delete()
     {
-        return $this->executeCall(CurlService::DELETE);
+        return $this->call(CurlService::DELETE);
     }
     /**
      * @method put
@@ -154,7 +154,7 @@ class CurlService
      */
     public function put()
     {
-        return $this->executeCall(CurlService::PUT);
+        return $this->call(CurlService::PUT);
     }
     /**
      * @method patch
@@ -162,17 +162,17 @@ class CurlService
      */
     public function patch()
     {
-        return $this->executeCall(CurlService::PATCH);
+        return $this->call(CurlService::PATCH);
     }
 
     /**
-     * Exec a HTTP call
+     * Execute a HTTP call
      * 
-     * @method executeCall
+     * @method call
      * @return object HttpReponse
      * @throws Exception
      */
-    private function executeCall(string $method)
+    private function call(string $method)
     {
         if(!$this->getCurl()) {
             throw new RuntimeException("Curl not initialized");
