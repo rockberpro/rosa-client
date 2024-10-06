@@ -9,9 +9,13 @@ namespace Rosa\Client\Interfaces;
  */
 interface RestClientInterface
 {
-    public static function buildForGet();
-    public static function buildForPost();
-    public static function buildForPut();
-    public static function buildForPatch();
-    public static function buildForDelete();
+    public static function build(string $apiKey);
+    public function url(string $url);
+    public function apiKey(string $apiKey);
+    public function payload(array $data);
+    public function get();
+    public function post();
+    public function put();
+    public function patch();
+    public function delete();
 }
