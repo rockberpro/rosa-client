@@ -12,7 +12,7 @@ DotEnv::load('.env');
  */
 $client = RestClient::buildForGet();
 $response = $client->url('localhost:8081/api/user/1')
-    ->apiKey(DotEnv::get('API_ROSA_KEY'))
+    ->apiKey(DotEnv::get('CLIENT_API_KEY'))
     ->get()
 ;
 var_dump($response);
@@ -22,7 +22,7 @@ var_dump($response);
  */
 $client = RestClient::buildForPost();
 $response = $client->url('localhost:8081/api/user/')
-    ->apiKey(DotEnv::get('API_ROSA_KEY'))
+    ->apiKey(DotEnv::get('CLIENT_API_KEY'))
     ->payload(['name' => '1st Name'])
     ->post()
 ;
@@ -33,7 +33,7 @@ var_dump($response);
  */
 $client = RestClient::buildForPut();
 $response = $client->url('localhost:8081/api/user/')
-    ->apiKey(DotEnv::get('API_ROSA_KEY'))
+    ->apiKey(DotEnv::get('CLIENT_API_KEY'))
     ->payload(['name' => '2nd Name'])
     ->put();
 var_dump($response);
@@ -43,7 +43,7 @@ var_dump($response);
  */
 $client = RestClient::buildForPatch();
 $response = $client->url('localhost:8081/api/user/')
-    ->apiKey(DotEnv::get('API_ROSA_KEY'))
+    ->apiKey(DotEnv::get('CLIENT_API_KEY'))
     ->payload(['name' => '3rd Name'])
     ->patch();
 var_dump($response);
@@ -53,7 +53,7 @@ var_dump($response);
  */
 $client = RestClient::buildForDelete();
 $response = $client->url('localhost:8081/api/user/1')
-    ->apiKey(DotEnv::get('API_ROSA_KEY'))
+    ->apiKey(DotEnv::get('CLIENT_API_KEY'))
     ->delete()
 ;
 var_dump($response);
