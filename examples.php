@@ -23,7 +23,7 @@ var_dump($response);
 $client = RestClient::buildForPost();
 $response = $client->url('localhost:8081/api/user/')
     ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-    ->payload(['name' => '1st Name'])
+    ->payload(['id' => '1'])
     ->post()
 ;
 var_dump($response);
@@ -34,7 +34,7 @@ var_dump($response);
 $client = RestClient::buildForPut();
 $response = $client->url('localhost:8081/api/user/')
     ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-    ->payload(['name' => '2nd Name'])
+    ->payload(['id' => '2'])
     ->put();
 var_dump($response);
 
@@ -44,7 +44,7 @@ var_dump($response);
 $client = RestClient::buildForPatch();
 $response = $client->url('localhost:8081/api/user/')
     ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-    ->payload(['name' => '3rd Name'])
+    ->payload(['id' => '3'])
     ->patch();
 var_dump($response);
 
