@@ -9,7 +9,7 @@ use Rosa\Client\Interfaces\RestClientInterface;
  * @version 1.0
  * @since october-2024
  */
-class AbstractRestClient implements RestClientInterface
+abstract class AbstractRestClient implements RestClientInterface
 {
     /**
      * @method buildForGet
