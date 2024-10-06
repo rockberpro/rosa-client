@@ -274,17 +274,16 @@ class CurlService
         if ($this->getApiKey()) {
             $headers[] = "X-Api-Key: {$this->getApiKey()}";
         }
-
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
         curl_setopt($curl, CURLOPT_SSLCERT, $this->getCertPath());
         curl_setopt($curl, CURLOPT_SSLKEY, $this->getKeyPath());
         curl_setopt($curl, CURLOPT_SSLCERTTYPE, "PEM");
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Expect:'));
-        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
 
         if ($this->getJson()) {
             curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getJson());
