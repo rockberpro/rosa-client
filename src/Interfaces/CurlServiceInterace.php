@@ -9,7 +9,7 @@ namespace Rosa\Client\Interfaces;
  */
 interface CurlServiceInterace
 {
-    public static function url(string $url);
+    public function url(string $url);
     public function apiKey(string $apiKey);
     public function json(string $json);
     public function build();

@@ -36,7 +36,7 @@ class CurlService extends AbstractCurlService implements CurlServiceInterace
      * @method build
      * @return self
      */
-    public static function url(string $url)
+    public function url(string $url)
     {
         $instance = new self();
         $instance->setUrl($url);

@@ -2,9 +2,14 @@
 
 namespace Rosa\Client\Interfaces;
 
+/**
+ * @author Samuel Oberger Rockenbach
+ * @version 1.0
+ * @since october-2024
+ */
 interface AbstractCurlServiceInterface
 {
-    public static function url(string $url);
+    public function url(string $url);
     public function apiKey(string $apiKey);
     public function json(string $json);
     public function build();

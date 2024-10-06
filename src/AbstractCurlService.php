@@ -8,6 +8,11 @@ use CurlHandle;
 use RuntimeException;
 use Throwable;
 
+/**
+ * @author Samuel Oberger Rockenbach
+ * @version 1.0
+ * @since october-2024
+ */
 abstract class AbstractCurlService implements AbstractCurlServiceInterface
 {
     protected string $url;
