@@ -19,20 +19,20 @@ $client->url('localhost:8080/api/user/1')
 
 / ** POST * /
 $client->url('localhost:8080/api/user/')
-	   ->payload(['id'  =>  '1'])
-	   ->post();
+       ->payload(['id'  =>  '1'])
+       ->post();
 
 / ** PUT * /
 $client->url('localhost:8080/api/user/')
-	   ->payload(['id'  =>  '2'])
-	   ->put();
+       ->payload(['id'  =>  '2'])
+       ->put();
 
 / ** PATCH */
 $client->url('localhost:8080/api/user/')
-	   ->payload(['id'  =>  '3'])
-	   ->patch();
+       ->payload(['id'  =>  '3'])
+       ->patch();
 
 / ** DELETE */
 $client->url('localhost:8080/api/user/1')
-	   ->delete();
+       ->delete();
 ```
