@@ -2,35 +2,125 @@
 
 namespace Rosa\Client;
 
+use Rosa\Client\Interfaces\RestClientInterface;
+
 /**
  * @author Samuel Oberger Rockenbach
  * @version 1.0
  * @since october-2024
  */
-class RestClient extends AbstractRestClient
+class RestClient implements RestClientInterface
 {
-    public static function buildForGet()
+    private CurlService $curlSerivce;
+
+    public static function build(string $apiKey)
     {
-        return parent::buildForGet();
+        $instance = new self();
+        $instance->curlSerivce = new CurlService();
+        $instance->apiKey($apiKey);
+
+        return $instance;
     }
 
-    public static function buildForPost()
+    /**
+     * Set the URL
+     * 
+     * @method url
+     * @param string $url
+     * @return self
+     */
+    public function url(string $url)
     {
-        return parent::buildForPost();
+        $this->curlSerivce->setUrl($url);
+
+        return $this;
     }
 
-    public static function buildForPut()
+    /**
+     * Set the API Key
+     * 
+     * @method apiKey
+     * @param string $apiKey
+     * @return self
+     */
+    public function apiKey(string $apiKey)
     {
-        return parent::buildForPut();
+        $this->curlSerivce->apiKey($apiKey);
+
+        return $this;
     }
 
-    public static function buildForPatch()
+    /**
+     * Set the payload
+     * 
+     * @method payload
+     * @param array $data
+     * @return self
+     */
+    public function payload(array $data)
     {
-        return parent::buildForPatch();
+        $this->curlSerivce->json(json_encode($data));
+
+        return $this;
     }
 
-    public static function buildForDelete()
+    /**
+     * Execute a GET request
+     * 
+     * @method get
+     * @return mixed
+     */
+    public function get()
     {
-        return parent::buildForDelete();
+        $this->curlSerivce->build();
+        return $this->curlSerivce->get();
+    }
+
+    /**
+     * Execute a POST request
+     * 
+     * @method post
+     * @return mixed
+     */
+    public function post()
+    {
+        $this->curlSerivce->build();
+        return $this->curlSerivce->post();
+    }
+
+    /**
+     * Execute a PUT request
+     * 
+     * @method put
+     * @return mixed
+     */
+    public function put()
+    {
+        $this->curlSerivce->build();
+        return $this->curlSerivce->put();
+    }
+
+    /**
+     * Execute a PATCH request
+     * 
+     * @method patch
+     * @return mixed
+     */
+    public function patch()
+    {
+        $this->curlSerivce->build();
+        return $this->curlSerivce->patch();
+    }
+
+    /**
+     * Execute a DELETE request
+     * 
+     * @method delete
+     * @return mixed
+     */
+    public function delete()
+    {
+        $this->curlSerivce->build();
+        return $this->curlSerivce->delete();
     }
 }
