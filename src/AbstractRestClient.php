@@ -75,16 +75,9 @@ class AbstractRestClient implements RestClientInterface
                 return $this;
             }
 
-            public function arrayPayload(array $array)
+            public function payload(array $data)
             {
-                $this->curlSerivce->json(json_encode($array));
-
-                return $this;
-            }
-
-            public function jsonPayload(string $json)
-            {
-                $this->curlSerivce->json($json);
+                $this->curlSerivce->json(json_encode($data));
 
                 return $this;
             }
@@ -125,16 +118,9 @@ class AbstractRestClient implements RestClientInterface
                 return $this;
             }
 
-            public function arrayPayload(array $array)
+            public function payload(array $data)
             {
-                $this->curlSerivce->json(json_encode($array));
-
-                return $this;
-            }
-
-            public function jsonPayload(string $json)
-            {
-                $this->curlSerivce->json($json);
+                $this->curlSerivce->json(json_encode($data));
 
                 return $this;
             }
@@ -175,16 +161,9 @@ class AbstractRestClient implements RestClientInterface
                 return $this;
             }
 
-            public function arrayPayload(array $array)
+            public function payload(array $data)
             {
-                $this->curlSerivce->json(json_encode($array));
-
-                return $this;
-            }
-
-            public function jsonPayload(string $json)
-            {
-                $this->curlSerivce->json($json);
+                $this->curlSerivce->json(json_encode($data));
 
                 return $this;
             }
