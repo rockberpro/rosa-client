@@ -73,7 +73,14 @@ class RestClient
                 return $this;
             }
 
-            public function json(string $json)
+            public function arrayPayload(array $array)
+            {
+                $this->curlSerivce->json(json_encode($array));
+
+                return $this;
+            }
+
+            public function jsonPayload(string $json)
             {
                 $this->curlSerivce->json($json);
 
@@ -116,7 +123,14 @@ class RestClient
                 return $this;
             }
 
-            public function json(string $json)
+            public function arrayPayload(array $array)
+            {
+                $this->curlSerivce->json(json_encode($array));
+
+                return $this;
+            }
+
+            public function jsonPayload(string $json)
             {
                 $this->curlSerivce->json($json);
 
@@ -159,7 +173,14 @@ class RestClient
                 return $this;
             }
 
-            public function json(string $json)
+            public function arrayPayload(array $array)
+            {
+                $this->curlSerivce->json(json_encode($array));
+
+                return $this;
+            }
+
+            public function jsonPayload(string $json)
             {
                 $this->curlSerivce->json($json);
 
