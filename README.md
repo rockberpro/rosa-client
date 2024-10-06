@@ -8,36 +8,31 @@
 ### Example: Simple Routes
 
 ```php
+DotEnv::load('.env');
+
+/ ** Create client * /
+$client =  RestClient::build(DotEnv::get('CLIENT_API_KEY'));
+
 / ** GET * /
-$client =  RestClient::buildForGet();
 $client->url('localhost:8080/api/user/1')
-	   ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-	   ->get()
+       ->get();
 
 / ** POST * /
-$client =  RestClient::buildForPost();
 $client->url('localhost:8080/api/user/')
-	   ->apiKey(DotEnv::get('CLIENT_API_KEY'))
 	   ->payload(['id'  =>  '1'])
-	   ->post()
+	   ->post();
 
 / ** PUT * /
-$client =  RestClient::buildForPut();
 $client->url('localhost:8080/api/user/')
-	   ->apiKey(DotEnv::get('CLIENT_API_KEY'))
 	   ->payload(['id'  =>  '2'])
 	   ->put();
 
 / ** PATCH */
-$client =  RestClient::buildForPatch();
-$client->url('localhost:8081/api/user/')
-	   ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-       ->payload(['id'  =>  '3'])
-       ->patch();
+$client->url('localhost:8080/api/user/')
+	   ->payload(['id'  =>  '3'])
+	   ->patch();
 
-/ ** DELETE * /
-$client =  RestClient::buildForDelete();
-$client->url('localhost:8081/api/user/1')
-	   ->apiKey(DotEnv::get('CLIENT_API_KEY'))
-	   ->delete()
+/ ** DELETE */
+$client->url('localhost:8080/api/user/1')
+	   ->delete();
 ```
