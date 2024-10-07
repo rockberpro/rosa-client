@@ -5,7 +5,7 @@
 
 **Rosa-Client** is a lightweight and efficient PHP-based REST API client. Its primary purpose is to streamline the process of interacting with RESTful APIs by providing a simple interface for sending HTTP requests and handling responses in a clean and reusable manner. Whether you need to communicate with third-party services or develop your own API interactions, Rosa-Client offers a flexible solution to manage REST API requests and responses.
 
-### Example: Simple Routes
+### Example: Consuming REST Services
 
 ```php
 DotEnv::load('.env');
