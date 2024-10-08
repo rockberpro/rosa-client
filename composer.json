@@ -2,14 +2,15 @@
     "name": "rosa/client",
     "autoload": {
         "psr-4": {
-            "Rosa\\Client\\": "src/"
+            "Rockberpro\\RestClient\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Samuel Oberger Rockenbach",
-            "email": "samuel.rockenbach@univates.br"
+            "name": "Samuel Oberger Rockenbach"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.4"
+    }
 }

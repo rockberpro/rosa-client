@@ -1,6 +1,6 @@
 <?php
 
-namespace Rosa\Client\Interfaces;
+namespace Rockberpro\RestClient\Interfaces;
 
 /**
  * @author Samuel Oberger Rockenbach

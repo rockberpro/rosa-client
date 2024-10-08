@@ -1,8 +1,8 @@
 <?php
 
-namespace Rosa\Client;
+namespace Rockberpro\RestClient;
 
-use Rosa\Client\Interfaces\CurlServiceInterace;
+use Rockberpro\RestClient\Interfaces\CurlServiceInterace;
 
 /**
  * @author Samuel Oberger Rockenbach
