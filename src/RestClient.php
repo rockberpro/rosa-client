@@ -1,8 +1,8 @@
 <?php
 
-namespace Rosa\Client;
+namespace Rockberpro\RestClient;
 
-use Rosa\Client\Interfaces\RestClientInterface;
+use Rockberpro\RestClient\Interfaces\RestClientInterface;
 
 /**
  * @author Samuel Oberger Rockenbach

@@ -1,8 +1,8 @@
 <?php
 
-namespace Rosa\Client;
+namespace Rockberpro\RestClient;
 
-use Rosa\Client\Interfaces\AbstractCurlServiceInterface;
+use Rockberpro\RestClient\Interfaces\AbstractCurlServiceInterface;
 
 use CurlHandle;
 use RuntimeException;

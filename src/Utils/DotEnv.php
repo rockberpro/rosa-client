@@ -1,6 +1,6 @@
 <?php
 
-namespace Rosa\Client\Utils;
+namespace Rockberpro\RestClient\Utils;
 
 use Exception;
 use Throwable;
@@ -9,7 +9,7 @@ use Throwable;
  * @author Samuel Oberger Rockenbach
  * 
  * @version 1.0
- * @package Rosa\Client\Utils
+ * @package Rockberpro\RestClient\Utils
  */
 class DotEnv
 {
