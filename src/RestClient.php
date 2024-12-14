@@ -13,11 +13,10 @@ class RestClient implements RestClientInterface
 {
     private CurlService $curlSerivce;
 
-    public static function build(string $apiKey)
+    public static function build()
     {
         $instance = new self();
         $instance->curlSerivce = new CurlService();
-        $instance->apiKey($apiKey);
 
         return $instance;
     }
@@ -37,15 +36,15 @@ class RestClient implements RestClientInterface
     }
 
     /**
-     * Set the API Key
+     * Add a header
      * 
-     * @method apiKey
-     * @param string $apiKey
+     * @method addHeader
+     * @param string $header
      * @return self
      */
-    public function apiKey(string $apiKey)
+    public function addHeader(string $header)
     {
-        $this->curlSerivce->apiKey($apiKey);
+        $this->curlSerivce->addHeader($header);
 
         return $this;
     }

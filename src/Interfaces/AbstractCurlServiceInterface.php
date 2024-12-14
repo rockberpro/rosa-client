@@ -10,7 +10,6 @@ namespace Rockberpro\RestClient\Interfaces;
 interface AbstractCurlServiceInterface
 {
     public function url(string $url);
-    public function apiKey(string $apiKey);
     public function json(string $json);
     public function build();
     public function get();

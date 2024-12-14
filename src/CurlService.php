@@ -5,9 +5,24 @@ namespace Rockberpro\RestClient;
 use Rockberpro\RestClient\Interfaces\CurlServiceInterace;
 
 /**
+ * 
+ * @example
+ *  CurlService::url(<url>)
+ *             ->addHeader(<header>)
+ *             ->build()
+ *             ->get()
+ * @example
+ *  CurlService::url(<url>)
+ *             ->addHeader(<header>)
+ *             ->json(<json>)
+ *             ->build()
+ *             ->post()
+ * 
+ * 
  * @author Samuel Oberger Rockenbach
  * @version 1.0
  * @since october-2024
+ * 
  */
 class CurlService extends AbstractCurlService implements CurlServiceInterace
 {
@@ -21,18 +36,6 @@ class CurlService extends AbstractCurlService implements CurlServiceInterace
      * Set the Request URL
      * 
      * * allows chaining
-     * @example
-     *  CurlService::url(<url>)
-     *             ->apiKey(<api-key>)
-     *             ->build()
-     *             ->get()
-     * @example
-     *  CurlService::url(<url>)
-     *             ->apiKey(<api-key>)
-     *             ->json(<json>)
-     *             ->build()
-     *             ->post()
-     * 
      * @method build
      * @return self
      */
@@ -45,17 +48,17 @@ class CurlService extends AbstractCurlService implements CurlServiceInterace
     }
 
     /**
-     * Set the API Key
+     * Add a header to the Request
      * 
      * * allows chaining
      * 
-     * @method apiKey
-     * @param string $apiKey
+     * @method addHeader
+     * @param string $header
      * @return self
      */
-    public function apiKey(string $apiKey)
+    public function addHeader(string $header)
     {
-        $this->setApiKey($apiKey);
+        $this->headers[] = $header;
 
         return $this;
     }
