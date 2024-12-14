@@ -9,9 +9,9 @@ namespace Rockberpro\RestClient\Interfaces;
  */
 interface RestClientInterface
 {
-    public static function build(string $apiKey);
+    public static function build();
     public function url(string $url);
-    public function apiKey(string $apiKey);
+    public function addHeader(string $header);
     public function payload(array $data);
     public function get();
     public function post();

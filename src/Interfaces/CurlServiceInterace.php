@@ -10,7 +10,7 @@ namespace Rockberpro\RestClient\Interfaces;
 interface CurlServiceInterace
 {
     public function url(string $url);
-    public function apiKey(string $apiKey);
+    public function addHeader(string $header);
     public function json(string $json);
     public function build();
     public function get();

@@ -19,7 +19,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     protected CurlHandle $curl;  
 
-    protected string $apiKey;
+    protected array $headers;
     protected string $json;
     protected string $keyPath;
     protected string $certPath;
@@ -131,11 +131,8 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         }
         curl_setopt($curl, CURLOPT_URL, $this->getUrl());
 
-        $headers[] = "Content-Type: application/json";
-        if ($this->getApiKey()) {
-            $headers[] = "X-Api-Key: {$this->getApiKey()}";
-        }
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $this->headers[] = "Content-Type: application/json";
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers);
         curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -240,6 +237,15 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     }
 
     /**
+     * @method getAuthorization
+     * @return string
+     */
+    protected function getAuthorization()
+    {
+        return $this->authorization;
+    }
+
+    /**
      * @method setApiKey
      * @param string $apiKey
      * @return self
@@ -247,6 +253,16 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     protected function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
+    }
+
+    /**
+     * @method setApiKey
+     * @param string $apiKey
+     * @return self
+     */
+    protected function setAuthorization(string $authorization)
+    {
+        $this->authorization = $authorization;
     }
 
     /**
