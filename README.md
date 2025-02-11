@@ -1,5 +1,5 @@
 
-# Rosa-Client: A REST API Client Built in PHP
+# Rosa-Client: Smart REST client for PHP
 
 ## Introduction
 
