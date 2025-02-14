@@ -11,7 +11,7 @@
 DotEnv::load('.env');
 
 / ** Create client * /
-$client =  RestClient::build();
+$client = new RestClient();
 
 / ** GET * /
 $client->url('localhost:8080/api/user/1')
@@ -21,19 +21,19 @@ $client->url('localhost:8080/api/user/1')
 / ** POST * /
 $client->url('localhost:8080/api/user/')
        ->addHeader('Authorization: Bearer <token>')
-       ->payload(['id'  =>  '1'])
+       ->body(['id'  =>  '1'])
        ->post();
 
 / ** PUT * /
 $client->url('localhost:8080/api/user/')
        ->addHeader('Authorization: Bearer <token>')
-       ->payload(['id'  =>  '2'])
+       ->body(['id'  =>  '2'])
        ->put();
 
 / ** PATCH */
 $client->url('localhost:8080/api/user/')
        ->addHeader('Authorization: Bearer <token>')
-       ->payload(['id'  =>  '3'])
+       ->body(['id'  =>  '3'])
        ->patch();
 
 / ** DELETE */

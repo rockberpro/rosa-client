@@ -13,12 +13,15 @@ class RestClient implements RestClientInterface
 {
     private CurlService $curlSerivce;
 
-    public static function build()
+    /**
+     * Constructor
+     * 
+     * @method __construct
+     * @return void
+     */
+    public function __construct()
     {
-        $instance = new self();
-        $instance->curlSerivce = new CurlService();
-
-        return $instance;
+        $this->curlSerivce = new CurlService();        
     }
 
     /**
@@ -49,16 +52,23 @@ class RestClient implements RestClientInterface
         return $this;
     }
 
+    public function query(array $data)
+    {
+        $this->curlSerivce->query($data);
+
+        return $this;
+    }
+
     /**
-     * Set the payload
+     * Set the body
      * 
-     * @method payload
+     * @method body
      * @param array $data
      * @return self
      */
-    public function payload(array $data)
+    public function body(array $data)
     {
-        $this->curlSerivce->json(json_encode($data));
+        $this->curlSerivce->body(json_encode($data));
 
         return $this;
     }

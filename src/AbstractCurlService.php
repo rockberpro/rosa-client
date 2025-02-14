@@ -4,7 +4,6 @@ namespace Rockberpro\RestClient;
 
 use Rockberpro\RestClient\Interfaces\AbstractCurlServiceInterface;
 
-use CurlHandle;
 use RuntimeException;
 use Throwable;
 
@@ -17,10 +16,11 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 {
     protected string $url;
 
-    protected CurlHandle $curl;  
+    protected $curl;
 
     protected array $headers;
-    protected string $json;
+    protected array $query;
+    protected string $body;
     protected string $keyPath;
     protected string $certPath;
 
@@ -120,7 +120,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method initCurl
-     * @return CurlHandle
+     * @return resource
      */
     protected function initCurl()
     {
@@ -129,6 +129,10 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         if(!$curl) {
             throw new RuntimeException("Error initializing Curl");
         }
+
+        if ($this->getQuery()) {
+            $this->setUrl($this->getUrl() . '?' . http_build_query($this->getQuery(),'', '&'));
+        }
         curl_setopt($curl, CURLOPT_URL, $this->getUrl());
 
         $this->headers[] = "Content-Type: application/json";
@@ -136,8 +140,8 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        if ($this->getJson()) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getJson());
+        if ($this->getBody()) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getBody());
         }
 
         return $this->setCurl($curl);
@@ -145,7 +149,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method initCertificate
-     * @return CurlHandle
+     * @return resource
      */
     protected function initCertificate()
     {
@@ -153,6 +157,10 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         $curl = curl_init();
         if(!$curl) {
             throw new RuntimeException("Error initializing Curl");
+        }
+
+        if ($this->getQuery()) {
+            $this->setUrl($this->getUrl() . '?' . http_build_query($this->getQuery(),'', '&'));
         }
         curl_setopt($curl, CURLOPT_URL, $this->getUrl());
 
@@ -168,8 +176,8 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Expect:'));
 
-        if ($this->getJson()) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getJson());
+        if ($this->getBody()) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getBody());
         }
 
         return $this->setCurl($curl);
@@ -206,7 +214,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method getCurl
-     * @return CurlHandle
+     * @return resource
      */
     public function getCurl()
     {
@@ -244,21 +252,42 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     }
 
     /**
-     * @method setJson
+     * @method setQuery
+     * @param array $data
      * @return void
      */
-    protected function setJson(string $json)
+    protected function setQuery(array $data)
     {
-        $this->json = $json;
+        $this->query = $data;
     }
 
     /**
-     * @method getJson
+     * @method getQuery
+     * @return array
+     */
+    protected function getQuery()
+    {
+        return $this->query ?? [];
+    }
+
+    /**
+     * @method setJson
+     * @param string $json
+     * @return void
+     */
+    protected function setBody(string $json)
+    {
+        $this->body = $json;
+    }
+
+    /**
+     * @method getBody
+     * @param string $json
      * @return string json
      */
-    protected function getJson()
+    protected function getBody()
     {
-        return $this->json ?? '';
+        return $this->body ?? '';
     }
 
     /**
