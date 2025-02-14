@@ -4,7 +4,6 @@ namespace Rockberpro\RestClient;
 
 use Rockberpro\RestClient\Interfaces\AbstractCurlServiceInterface;
 
-use CurlHandle;
 use RuntimeException;
 use Throwable;
 
@@ -17,7 +16,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 {
     protected string $url;
 
-    protected CurlHandle $curl;  
+    protected $curl;
 
     protected array $headers;
     protected string $json;
@@ -120,7 +119,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method initCurl
-     * @return CurlHandle
+     * @return resource
      */
     protected function initCurl()
     {
@@ -145,7 +144,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method initCertificate
-     * @return CurlHandle
+     * @return resource
      */
     protected function initCertificate()
     {
@@ -206,7 +205,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method getCurl
-     * @return CurlHandle
+     * @return resource
      */
     public function getCurl()
     {
