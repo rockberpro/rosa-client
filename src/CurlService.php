@@ -26,9 +26,9 @@ use Rockberpro\RestClient\Interfaces\CurlServiceInterace;
  */
 class CurlService extends AbstractCurlService implements CurlServiceInterace
 {
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
+    const GET   = 'GET';
+    const POST  = 'POST';
+    const PUT   = 'PUT';
     const PATCH = 'PATCH';
     const DELETE = 'DELETE';
 
@@ -63,9 +63,9 @@ class CurlService extends AbstractCurlService implements CurlServiceInterace
         return $this;
     }
 
-    public function json(string $json)
+    public function body(string $json)
     {
-        $this->setJson($json);
+        $this->setBody($json);
 
         return $this;
     }

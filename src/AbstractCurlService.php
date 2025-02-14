@@ -19,7 +19,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     protected $curl;
 
     protected array $headers;
-    protected string $json;
+    protected string $body;
     protected string $keyPath;
     protected string $certPath;
 
@@ -135,8 +135,8 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        if ($this->getJson()) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getJson());
+        if ($this->getBody()) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getBody());
         }
 
         return $this->setCurl($curl);
@@ -167,8 +167,8 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Expect:'));
 
-        if ($this->getJson()) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getJson());
+        if ($this->getBody()) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $this->getBody());
         }
 
         return $this->setCurl($curl);
@@ -246,18 +246,18 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
      * @method setJson
      * @return void
      */
-    protected function setJson(string $json)
+    protected function setBody(string $json)
     {
-        $this->json = $json;
+        $this->body = $json;
     }
 
     /**
-     * @method getJson
+     * @method getBody
      * @return string json
      */
-    protected function getJson()
+    protected function getBody()
     {
-        return $this->json ?? '';
+        return $this->body ?? '';
     }
 
     /**

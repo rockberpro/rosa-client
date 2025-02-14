@@ -61,7 +61,7 @@ class RestClient implements RestClientInterface
      */
     public function body(array $data)
     {
-        $this->curlSerivce->json(json_encode($data));
+        $this->curlSerivce->body(json_encode($data));
 
         return $this;
     }
