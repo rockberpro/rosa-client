@@ -53,13 +53,13 @@ class RestClient implements RestClientInterface
     }
 
     /**
-     * Set the payload
+     * Set the body
      * 
-     * @method payload
+     * @method body
      * @param array $data
      * @return self
      */
-    public function payload(array $data)
+    public function body(array $data)
     {
         $this->curlSerivce->json(json_encode($data));
 

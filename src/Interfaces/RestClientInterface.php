@@ -11,7 +11,7 @@ interface RestClientInterface
 {
     public function url(string $url);
     public function addHeader(string $header);
-    public function payload(array $data);
+    public function body(array $data);
     public function get();
     public function post();
     public function put();
