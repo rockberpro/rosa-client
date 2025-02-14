@@ -11,6 +11,7 @@ interface CurlServiceInterace
 {
     public function url(string $url);
     public function addHeader(string $header);
+    public function query(array $data);
     public function body(string $json);
     public function build();
     public function get();

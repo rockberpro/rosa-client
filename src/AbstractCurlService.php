@@ -19,6 +19,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     protected $curl;
 
     protected array $headers;
+    protected array $query;
     protected string $body;
     protected string $keyPath;
     protected string $certPath;
@@ -128,6 +129,10 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         if(!$curl) {
             throw new RuntimeException("Error initializing Curl");
         }
+
+        if ($this->getQuery()) {
+            $this->setUrl($this->getUrl() . '?' . http_build_query($this->getQuery(),'', '&'));
+        }
         curl_setopt($curl, CURLOPT_URL, $this->getUrl());
 
         $this->headers[] = "Content-Type: application/json";
@@ -152,6 +157,10 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
         $curl = curl_init();
         if(!$curl) {
             throw new RuntimeException("Error initializing Curl");
+        }
+
+        if ($this->getQuery()) {
+            $this->setUrl($this->getUrl() . '?' . http_build_query($this->getQuery(),'', '&'));
         }
         curl_setopt($curl, CURLOPT_URL, $this->getUrl());
 
@@ -243,7 +252,27 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
     }
 
     /**
+     * @method setQuery
+     * @param array $data
+     * @return void
+     */
+    protected function setQuery(array $data)
+    {
+        $this->query = $data;
+    }
+
+    /**
+     * @method getQuery
+     * @return array
+     */
+    protected function getQuery()
+    {
+        return $this->query ?? [];
+    }
+
+    /**
      * @method setJson
+     * @param string $json
      * @return void
      */
     protected function setBody(string $json)
@@ -253,6 +282,7 @@ abstract class AbstractCurlService implements AbstractCurlServiceInterface
 
     /**
      * @method getBody
+     * @param string $json
      * @return string json
      */
     protected function getBody()

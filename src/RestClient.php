@@ -52,6 +52,13 @@ class RestClient implements RestClientInterface
         return $this;
     }
 
+    public function query(array $data)
+    {
+        $this->curlSerivce->query($data);
+
+        return $this;
+    }
+
     /**
      * Set the body
      * 
