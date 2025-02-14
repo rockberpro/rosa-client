@@ -13,12 +13,15 @@ class RestClient implements RestClientInterface
 {
     private CurlService $curlSerivce;
 
-    public static function build()
+    /**
+     * Constructor
+     * 
+     * @method __construct
+     * @return void
+     */
+    public function __construct()
     {
-        $instance = new self();
-        $instance->curlSerivce = new CurlService();
-
-        return $instance;
+        $this->curlSerivce = new CurlService();        
     }
 
     /**

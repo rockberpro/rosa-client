@@ -11,7 +11,7 @@
 DotEnv::load('.env');
 
 / ** Create client * /
-$client =  RestClient::build();
+$client = new RestClient();
 
 / ** GET * /
 $client->url('localhost:8080/api/user/1')
